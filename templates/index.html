@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@9.0.4/dist/vis-network.min.js"></script>
+    <title>Travel Plan - Shortest Path</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        #graph {
+            width: 100%;
+            height: 80%;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Interactive Graph: Travel Plan</h1>
+    <p>Enter cities and distances, then calculate the shortest path between the origin and destination cities.</p>
+
+    <!-- Form to add cities and distances -->
+    <div class="form-container">
+        <label for="city1">City 1:</label>
+        <input type="text" id="city1" placeholder="City 1">
+        <label for="city2">City 2:</label>
+        <input type="text" id="city2" placeholder="City 2">
+        <label for="distance">Distance:</label>
+        <input type="number" id="distance" placeholder="Distance">
+        <button onclick="addEdge()">Add Distance</button>
+    </div>
+
+    <!-- Select Origin and Destination -->
+    <div class="form-container">
+        <label for="origin">Origin:</label>
+        <select id="origin"></select>
+        <label for="destination">Destination:</label>
+        <select id="destination"></select>
+        <button onclick="calculateShortestPath()">Find Shortest Path</button>
+    </div>
+    <div id="results"></div>
+
+    <h2>Graph Visualization</h2>
+    <div id="graph"></div>
+
+    <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
+</body>
+</html>
